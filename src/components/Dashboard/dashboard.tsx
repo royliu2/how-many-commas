@@ -28,7 +28,8 @@ export const Dashboard = () => {
 		console.log({tokenPricesResponse})
 		const tokenAccounts = await Promise.all(tokenAccountsByOwner.value.map(async (account) => {
       const rawAccount = AccountLayout.decode(account.account.data)
-			return { ...rawAccount, tokenPrice: tokenPricesResponse.data?.[account.pubkey.toString()] }
+			// return { ...rawAccount, tokenPrice: tokenPricesResponse.data?.[account.pubkey.toString()] }
+			return { ...rawAccount, tokenPrice: 0 }
 	  }))
 
 		const sortedAccounts = tokenAccounts.sort((a, b) => Number(b.amount - a.amount))
